@@ -348,4 +348,5 @@ async function sendSurveyData(data) {
         console.error('Грешка:', error);
         alert('Възникна грешка при изпращането на анкетата. Моля, опитайте отново.');
     }
+
 }
