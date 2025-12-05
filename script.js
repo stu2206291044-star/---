@@ -590,4 +590,290 @@ function resetView() {
     interactiveModel.selectRoom('entrance');
 }
 }
+// ==================== ИНТЕРАКТИВЕН МАКЕТ ====================
+
+class InteractiveSchoolModel {
+    constructor() {
+        this.rooms = {
+            entrance: {
+                name: "Входна зона",
+                area: "45 m²",
+                capacity: "20 души",
+                access: "100% достъпна",
+                description: "Входно пространство с автоматични плъзгащи се врати на кота нула, видео интерком система и тактилни насоки за хора с нарушено зрение.",
+                equipment: [
+                    "Автоматични плъзгащи се врати",
+                    "Видео интерком система",
+                    "Тактилни насоки на пода",
+                    "Контрол на достъпа с мониторинг",
+                    "Широк вход (2m ширина)",
+                    "Приемна зона с ниско бюро"
+                ]
+            },
+            corridor: {
+                name: "Коридори и навигация",
+                area: "120 m²",
+                capacity: "-",
+                access: "100% достъпна",
+                description: "'Улици за учене' с разширения за социализация, цветово кодиране и мултисензорна навигация според принципите на Универсалния дизайн.",
+                equipment: [
+                    "Тактилни ленти на пода за хора с нарушено зрение",
+                    "Цветово кодиране (синя/зелена линия)",
+                    "Акустични тавани за намаляване на шума",
+                    "Табели на Брайл и пиктограми",
+                    "Мека мебел в разширенията",
+                    "Осветление с регулируем интензитет"
+                ]
+            },
+            classroom: {
+                name: "Приобщаваща класна стая",
+                area: "60 m²",
+                capacity: "20 ученика",
+                access: "100% достъпна",
+                description: "Зонирано пространство с гъвкава мебелировка, проектирано според UDL принципите за поддържане на различни стилове на учене.",
+                equipment: [
+                    "Люлеещи се столове (Hokki Stools)",
+                    "Топки за баланс (Ball Chairs)",
+                    "Стоящи бюра с регулируема височина",
+                    "Индивидуални 'гнезда' за уединение",
+                    "Интерактивен дисплей с регулируема височина",
+                    "Таблети със софтуер за преобразуване на говор в текст"
+                ]
+            },
+            sensory: {
+                name: "Сензорна терапевтична стая",
+                area: "35 m²",
+                capacity: "4-6 деца",
+                access: "100% достъпна",
+                description: "Мултисензорна среда за регулация и интеграция, базирана на Snoezelen терапията. Възможност за контролирано дозиране на стимулите.",
+                equipment: [
+                    "Кула с мехурчета (Bubble Tube) за визуална стимулация",
+                    "Оптични влакна (Fiber Optic Tails) за тактилна зона",
+                    "Сензорна люлка (Platform Swing) за вестибуларна система",
+                    "Тежки одеяла и дюшеци за Deep Pressure Therapy",
+                    "Сензорни панели на стената за интерактивна зона",
+                    "Централен контролен панел за управление на средата"
+                ]
+            },
+            resource: {
+                name: "Ресурсен кабинет",
+                area: "25 m²",
+                capacity: "1-4 ученика",
+                access: "100% достъпна",
+                description: "Пространство за индивидуална работа и работа в малки групи с ученици със специални образователни потребности (СОП).",
+                equipment: [
+                    "Модулни маси с регулируема височина",
+                    "Специализиран софтуер за когнитивна рехабилитация",
+                    "Монтесори пособия и дидактични материали",
+                    "Тактилни карти и учебни ресурси",
+                    "Ресурсна библиотека с адаптирани материали",
+                    "Тих работни зони с шумоизолация"
+                ]
+            },
+            playground: {
+                name: "Дворно пространство",
+                area: "800 m²",
+                capacity: "50+ деца",
+                access: "100% достъпна",
+                description: "Сензорна градина и приобщаваща площадка, проектирана като 'класна стая на открито' със стимулиране на всички сетива.",
+                equipment: [
+                    "Пътека на усещанията с различни настилки",
+                    "Приобщаващи люлки тип 'гнездо'",
+                    "Въртележки на ниво терен за директен достъп",
+                    "Ароматни лехи с билки (мента, розмарин)",
+                    "Външни музикални инструменти (ксилофони)",
+                    "Жив плет за визуални бариери и конфиденциалност"
+                ]
+            }
+        };
+        
+        this.init();
+    }
+    
+    init() {
+        this.setupRoomInteractions();
+        this.setupModelControls();
+        this.selectRoom('entrance');
+    }
+    
+    setupRoomInteractions() {
+        // Клик върху стая
+        document.querySelectorAll('.room').forEach(room => {
+            room.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const roomId = room.dataset.room;
+                this.selectRoom(roomId);
+            });
+            
+            // Ховер ефект
+            room.addEventListener('mouseenter', () => {
+                room.style.zIndex = '100';
+            });
+            
+            room.addEventListener('mouseleave', () => {
+                if (!room.classList.contains('active')) {
+                    room.style.zIndex = '1';
+                }
+            });
+        });
+    }
+    
+    setupModelControls() {
+        // Бутони за промяна на изгледа
+        document.querySelectorAll('.control-btn[data-view]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const view = btn.dataset.view;
+                this.changeView(view);
+                
+                // Активен бутон
+                document.querySelectorAll('.control-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+        
+        // Бутон за нулиране
+        document.querySelector('.control-btn[onclick="resetView()"]').addEventListener('click', () => {
+            this.resetView();
+        });
+    }
+    
+    selectRoom(roomId) {
+        const roomData = this.rooms[roomId];
+        if (!roomData) return;
+        
+        // Премахване на активен клас
+        document.querySelectorAll('.room').forEach(room => room.classList.remove('active'));
+        
+        // Добавяне на активен клас
+        const selectedRoom = document.querySelector(`.room[data-room="${roomId}"]`);
+        if (selectedRoom) {
+            selectedRoom.classList.add('active');
+            selectedRoom.style.zIndex = '100';
+        }
+        
+        // Обновяване на информацията
+        this.updateRoomInfo(roomData);
+        
+        // Обновяване на снимките
+        this.updateRoomPhotos(roomId);
+    }
+    
+    updateRoomInfo(roomData) {
+        document.getElementById('selected-room').textContent = roomData.name;
+        document.getElementById('room-area').textContent = roomData.area;
+        document.getElementById('room-capacity').textContent = roomData.capacity;
+        document.getElementById('room-access').textContent = roomData.access;
+        
+        // Описание
+        const descElement = document.getElementById('room-description');
+        descElement.innerHTML = `<p>${roomData.description}</p>`;
+        
+        // Оборудване
+        const equipmentList = document.getElementById('equipment-list');
+        equipmentList.innerHTML = '';
+        
+        roomData.equipment.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <i class="fas fa-check" style="color: #27ae60; margin-right: 8px;"></i>
+                ${item}
+            `;
+            equipmentList.appendChild(li);
+        });
+    }
+    
+    updateRoomPhotos(roomId) {
+        const photoGrid = document.getElementById('photo-grid');
+        
+        // Примерни снимки за всяка стая
+        const roomPhotos = {
+            entrance: [
+                'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=400&h=300&fit=crop'
+            ],
+            classroom: [
+                'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=300&fit=crop'
+            ],
+            sensory: [
+                'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop&auto=format&fit=crop&w=400&h=300&q=80'
+            ],
+            resource: [
+                'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1517486808906-6ca8b3f8f6be?w=400&h=300&fit=crop'
+            ],
+            playground: [
+                'https://images.unsplash.com/photo-1517486808906-6ca8b3f8f6be?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1541692641319-981cc79ee10a?w=400&h=300&fit=crop'
+            ],
+            corridor: [
+                'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop',
+                'https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=400&h=300&fit=crop'
+            ]
+        };
+        
+        const photos = roomPhotos[roomId] || roomPhotos.entrance;
+        
+        photoGrid.innerHTML = '';
+        
+        photos.forEach((photoUrl, index) => {
+            const photoDiv = document.createElement('div');
+            photoDiv.className = 'photo-item';
+            photoDiv.innerHTML = `
+                <img src="${photoUrl}" 
+                     alt="${this.rooms[roomId].name} - снимка ${index + 1}"
+                     onerror="this.src='https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=400&h=300&fit=crop'">
+            `;
+            photoGrid.appendChild(photoDiv);
+        });
+    }
+    
+    changeView(viewType) {
+        const model = document.querySelector('.school-model');
+        
+        switch(viewType) {
+            case '3d':
+                model.style.transform = 'perspective(1000px) rotateX(20deg) rotateY(0deg)';
+                break;
+            case 'floorplan':
+                model.style.transform = 'perspective(1000px) rotateX(90deg) rotateY(0deg)';
+                break;
+            case 'photos':
+                // Показване на галерия
+                alert('Галерия снимки - в реална версия тук ще се покажат реални снимки от училището');
+                break;
+        }
+    }
+    
+    resetView() {
+        const model = document.querySelector('.school-model');
+        model.style.transform = 'perspective(1000px) rotateX(20deg) rotateY(0deg)';
+        
+        // Нулиране на контролите
+        document.querySelectorAll('.control-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector('.control-btn[data-view="3d"]').classList.add('active');
+        
+        // Връщане към входната зона
+        this.selectRoom('entrance');
+    }
+}
+
+// Инициализация на макета
+let schoolModel;
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Проверка дали съществува секцията за макета
+    if (document.getElementById('interactive-model')) {
+        schoolModel = new InteractiveSchoolModel();
+        console.log('Интерактивният макет е зареден успешно!');
+    }
+});
+
+// Глобална функция за нулиране
+function resetView() {
+    if (schoolModel) {
+        schoolModel.resetView();
+    }
+}
 
