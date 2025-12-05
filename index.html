@@ -10,6 +10,154 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <!-- 🔥 ИНТЕРАКТИВЕН 3D МАКЕТ НА УЧИЛИЩЕТО -->
+<section id="interactive-model" class="section">
+    <div class="container">
+        <h2><i class="fas fa-cube"></i> Интерактивен 3D макет на приобщаващо училище</h2>
+        <p class="subtitle">Кликни върху всяка зона, за да видиш подробности</p>
+        
+        <div class="model-container">
+            <!-- Основен макет -->
+            <div class="school-model">
+                <!-- Главна сграда -->
+                <div class="building main-building">
+                    <div class="floor ground-floor">
+                        <!-- Вход -->
+                        <div class="room entrance active" data-room="entrance">
+                            <span class="room-label">Входна зона</span>
+                            <div class="room-details">
+                                <h4>🚪 Вход с автоматични врати</h4>
+                                <ul>
+                                    <li>На кота нула</li>
+                                    <li>Видео интерком</li>
+                                    <li>Тактилни насоки</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Коридори -->
+                        <div class="room corridor" data-room="corridor">
+                            <span class="room-label">Коридори</span>
+                            <div class="room-details">
+                                <h4>🚶 "Улици за учене"</h4>
+                                <ul>
+                                    <li>Тактилни ленти</li>
+                                    <li>Цветово кодиране</li>
+                                    <li>Акустични тавани</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Класни стаи -->
+                        <div class="room classroom" data-room="classroom">
+                            <span class="room-label">Класна стая</span>
+                            <div class="room-details">
+                                <h4>🪑 Гъвкаво разположение</h4>
+                                <ul>
+                                    <li>Люлеещи се столове</li>
+                                    <li>Топки за баланс</li>
+                                    <li>Индивидуални "гнезда"</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Сензорна стая -->
+                        <div class="room sensory-room" data-room="sensory">
+                            <span class="room-label">Сензорна стая</span>
+                            <div class="room-details">
+                                <h4>🌈 Мултисензорна среда</h4>
+                                <ul>
+                                    <li>Bubble Tube</li>
+                                    <li>Оптични влакна</li>
+                                    <li>Сензорна люлка</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <!-- Ресурсен кабинет -->
+                        <div class="room resource-room" data-room="resource">
+                            <span class="room-label">Ресурсен кабинет</span>
+                            <div class="room-details">
+                                <h4>🛠️ Индивидуална подкрепа</h4>
+                                <ul>
+                                    <li>Модулни маси</li>
+                                    <li>Специализиран софтуер</li>
+                                    <li>Тактилни карти</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Двор -->
+                <div class="building yard">
+                    <div class="room playground" data-room="playground">
+                        <span class="room-label">Двор</span>
+                        <div class="room-details">
+                            <h4>🌿 Сензорна градина</h4>
+                            <ul>
+                                <li>Пътека на усещанията</li>
+                                <li>Приобщаваща площадка</li>
+                                <li>Ароматни лехи</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Детайлна информация -->
+            <div class="model-info">
+                <div class="info-header">
+                    <h3 id="selected-room">Изберете зона</h3>
+                    <div class="room-stats">
+                        <span class="stat"><i class="fas fa-ruler-combined"></i> Площ: <span id="room-area">-</span> m²</span>
+                        <span class="stat"><i class="fas fa-users"></i> Капацитет: <span id="room-capacity">-</span></span>
+                        <span class="stat"><i class="fas fa-wheelchair"></i> Достъпност: <span id="room-access">-</span></span>
+                    </div>
+                </div>
+                
+                <div class="info-content">
+                    <div class="room-description" id="room-description">
+                        <p>Кликнете върху някоя от зоните в макета, за да видите подробна информация.</p>
+                    </div>
+                    
+                    <div class="room-equipment" id="room-equipment">
+                        <h4><i class="fas fa-tools"></i> Оборудване:</h4>
+                        <ul id="equipment-list">
+                            <li>Изберете зона за да видите оборудването</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="room-photos">
+                        <h4><i class="fas fa-images"></i> Визуализации:</h4>
+                        <div class="photo-grid" id="photo-grid">
+                            <div class="photo-placeholder">
+                                <i class="fas fa-image"></i>
+                                <p>Снимки ще се появят тук</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Контроли -->
+        <div class="model-controls">
+            <button class="control-btn active" data-view="3d">
+                <i class="fas fa-cube"></i> 3D изглед
+            </button>
+            <button class="control-btn" data-view="floorplan">
+                <i class="fas fa-vector-square"></i> План
+            </button>
+            <button class="control-btn" data-view="photos">
+                <i class="fas fa-images"></i> Снимки
+            </button>
+            <button class="control-btn" onclick="resetView()">
+                <i class="fas fa-sync-alt"></i> Нулирай
+            </button>
+        </div>
+    </div>
+</section>
     <!-- Навигация -->
     <nav class="main-nav">
         <div class="nav-container">
@@ -643,3 +791,4 @@
 </body>
 
 </html>
+
