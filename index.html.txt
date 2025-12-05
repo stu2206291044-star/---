@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приобщаващо Училище - Концептуален модел</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-school"></i>
+                <span>Приобщаващо Училище</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home"><i class="fas fa-home"></i> Начало</a></li>
+                <li><a href="#theory"><i class="fas fa-book"></i> Теоретична рамка</a></li>
+                <li><a href="#model"><i class="fas fa-building"></i> Макет на училище</a></li>
+                <li><a href="#methodology"><i class="fas fa-clipboard-list"></i> Методология</a></li>
+                <li><a href="#survey"><i class="fas fa-poll"></i> Анкета</a></li>
+                <li><a href="#chat"><i class="fas fa-comments"></i> Чат за идеи</a></li>
+                <li><a href="#resources"><i class="fas fa-link"></i> Ресурси</a></li>
+            </ul>
+            <button class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Херо секция -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Концептуален модел на приобщаваща училищна среда</h1>
+            <p class="subtitle">Съобразен с Наредба №24 и принципите на Универсалния дизайн за учене (UDL)</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="number">100%</span>
+                    <span class="label">Достъпност</span>
+                </div>
+                <div class="stat">
+                    <span class="number">3</span>
+                    <span class="label">Измерения на приобщаването</span>
+                </div>
+                <div class="stat">
+                    <span class="number">2025</span>
+                    <span class="label">Иновативни решения</span>
+                </div>
+            </div>
+            <a href="#model" class="cta-button">
+                <i class="fas fa-eye"></i> Вижте интерактивния макет
+            </a>
+        </div>
+        <div class="hero-image">
+            <img src="images/school-layout.jpg" alt="Макет на приобщаващо училище">
+        </div>
+    </section>
+
+    <!-- Теоретична рамка -->
+    <section id="theory" class="section">
+        <div class="container">
+            <h2><i class="fas fa-graduation-cap"></i> Теоретична рамка на приобщаващото образование</h2>
+            
+            <div class="theory-grid">
+                <div class="theory-card">
+                    <div class="theory-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <h3>Еволюция на понятието</h3>
+                    <p>От интеграция към приобщаване - промяна на системата, а не на детето</p>
+                    <a href="https://csie.org.uk/index-for-inclusion/" target="_blank" class="theory-link">
+                        Индекс за приобщаване (Booth & Ainscow) <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+                <div class="theory-card">
+                    <div class="theory-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Нормативна база</h3>
+                    <ul>
+                        <li>ЗПУО</li>
+                        <li>Наредба за приобщаващото образование</li>
+                        <li>Наредба №24 от 10.09.2020 г.</li>
+                    </ul>
+                    <a href="https://varna.obshtini.bg/doc/4416804/0/" target="_blank" class="theory-link">
+                        Вижте Наредба №24 <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+
+                <div class="theory-card">
+                    <div class="theory-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Универсален дизайн за учене (UDL)</h3>
+                    <div class="udl-principles">
+                        <div class="principle">
+                            <span class="principle-title">Защо (Афективни мрежи)</span>
+                            <span class="principle-desc">Ангажираност</span>
+                        </div>
+                        <div class="principle">
+                            <span class="principle-title">Какво (Мрежи за разпознаване)</span>
+                            <span class="principle-desc">Представяне</span>
+                        </div>
+                        <div class="principle">
+                            <span class="principle-title">Как (Стратегически мрежи)</span>
+                            <span class="principle-desc">Действие и изразяване</span>
+                        </div>
+                    </div>
+                    <a href="https://www.cast.org/what-we-do/universal-design-for-learning/" target="_blank" class="theory-link">
+                        Официален сайт на CAST <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <h3>Историческо развитие на приобщаването</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Преди 20-ти век</div>
+                        <div class="timeline-content">
+                            <h4>Изключване и сегрегация</h4>
+                            <p>Деца с увреждания в специализирани институции</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Средата на 20-ти век</div>
+                        <div class="timeline-content">
+                            <h4>Интеграция</h4>
+                            <p>Детето се адаптира към системата</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Края на 20-ти век</div>
+                        <div class="timeline-content">
+                            <h4>Приобщаване</h4>
+                            <p>Системата се променя за всички деца</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">21-ви век</div>
+                        <div class="timeline-content">
+                            <h4>Универсален дизайн</h4>
+                            <p>Проектиране за всички от самото начало</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Интерактивен макет на училището -->
+    <section id="model" class="section dark-section">
+        <div class="container">
+            <h2><i class="fas fa-vector-square"></i> Интерактивен макет на приобщаващо училище</h2>
+            
+            <div class="model-controls">
+                <button class="model-btn active" data-room="classroom">
+                    <i class="fas fa-chalkboard-teacher"></i> Класна стая
+                </button>
+                <button class="model-btn" data-room="sensory">
+                    <i class="fas fa-spa"></i> Сензорна стая
+                </button>
+                <button class="model-btn" data-room="resource">
+                    <i class="fas fa-tools"></i> Ресурсен кабинет
+                </button>
+                <button class="model-btn" data-room="playground">
+                    <i class="fas fa-seedling"></i> Дворно пространство
+                </button>
+                <button class="model-btn" data-room="corridor">
+                    <i class="fas fa-walking"></i> Коридори и навигация
+                </button>
+            </div>
+
+            <div class="model-viewer">
+                <div class="model-diagram" id="classroom-diagram">
+                    <!-- Класна стая ще се визуализира с CSS/JS -->
+                    <div class="classroom">
+                        <div class="flexible-seating">
+                            <div class="seat wobble-chair" title="Люлеещ се стол">
+                                <i class="fas fa-chair"></i>
+                            </div>
+                            <div class="seat ball-chair" title="Топка за баланс">
+                                <i class="fas fa-basketball-ball"></i>
+                            </div>
+                            <div class="seat standing-desk" title="Стоящо бюро">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div class="seat privacy-pod" title="Индивидуално гнездо">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                        </div>
+                        <div class="smart-board">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <div class="learning-zones">
+                            <div class="zone reading-zone">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="zone group-zone">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="model-description">
+                    <h3 id="room-title">Приобщаваща класна стая</h3>
+                    <p id="room-description">
+                        Пространство, проектирано според принципите на UDL с гъвкава мебелировка:
+                        люлеещи се столове, топки за баланс, стоящи бюра и индивидуални "гнезда".
+                        Подкрепя различни стилове на учене и сензорни потребности.
+                    </p>
+                    <div class="room-specs">
+                        <div class="spec">
+                            <i class="fas fa-ruler-combined"></i>
+                            <span>Минимална площ: 60 m²</span>
+                        </div>
+                        <div class="spec">
+                            <i class="fas fa-wheelchair"></i>
+                            <span>Пълен достъп за колички</span>
+                        </div>
+                        <div class="spec">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Регулируемо осветление</span>
+                        </div>
+                        <div class="spec">
+                            <i class="fas fa-volume-mute"></i>
+                            <span>Акустични панели</span>
+                        </div>
+                    </div>
+                    <a href="#details" class="details-link">
+                        <i class="fas fa-info-circle"></i> Вижте пълните спецификации
+                    </a>
+                </div>
+            </div>
+
+            <!-- Сензорна стая таблица -->
+            <div class="sensory-table">
+                <h3><i class="fas fa-table"></i> Оборудване на сензорната стая</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Зона</th>
+                            <th>Оборудване</th>
+                            <th>Терапевтична функция</th>
+                            <th>Източници</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Визуална стимулация</td>
+                            <td>Кула с мехурчета (Bubble Tube)</td>
+                            <td>Успокояващ визуален фокус, тактилна обратна връзка</td>
+                            <td><a href="https://www.especialneeds.com/shop/sensory-room-equipment.html" target="_blank">Especial Needs</a></td>
+                        </tr>
+                        <tr>
+                            <td>Тактилна зона</td>
+                            <td>Оптични влакна (Fiber Optic Tails)</td>
+                            <td>Стимулира зрително внимание и фина моторика</td>
+                            <td><a href="https://funandfunction.com/sensory-room-equipment" target="_blank">Fun & Function</a></td>
+                        </tr>
+                        <tr>
+                            <td>Вестибуларна зона</td>
+                            <td>Сензорна люлка (Platform Swing)</td>
+                            <td>Подобрява баланс и пространствена ориентация</td>
+                            <td><a href="https://www.theottoolbox.com/sensory-room-equipment-ot-recommendations/" target="_blank">OT Toolbox</a></td>
+                        </tr>
+                        <tr>
+                            <td>Проприоцептивна зона</td>
+                            <td>Тежки одеяла и дюшеци</td>
+                            <td>Deep Pressure Therapy за успокояване</td>
+                            <td><a href="https://sensoryone.com/what-is-the-main-equipment-required-for-a-sensory-room/" target="_blank">SensoryOne</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Методология на изследването -->
+    <section id="methodology" class="section">
+        <div class="container">
+            <h2><i class="fas fa-clipboard-check"></i> Методология на изследването</h2>
+            
+            <div class="methodology-content">
+                <div class="research-goals">
+                    <h3>Цели на изследването:</h3>
+                    <ol>
+                        <li>Диагностициране на текущото състояние на приобщаващия процес</li>
+                        <li>Анализ на нагласите на заинтересованите страни</li>
+                        <li>Идентифициране на бариери пред ученето</li>
+                        <li>Оценка на гъвкавостта на педагогическите практики</li>
+                    </ol>
+                </div>
+
+                <div class="target-groups">
+                    <h3>Целеви групи:</h3>
+                    <div class="groups-grid">
+                        <div class="group-card">
+                            <i class="fas fa-user-tie"></i>
+                            <h4>Педагогически специалисти</h4>
+                            <p>Учители, психолози, логопеди</p>
+                        </div>
+                        <div class="group-card">
+                            <i class="fas fa-users"></i>
+                            <h4>Родители</h4>
+                            <p>На деца със СОП и в норма</p>
+                        </div>
+                        <div class="group-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h4>Ученици</h4>
+                            <p>Прогимназиален и гимназиален етап</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Графика за анализ -->
+                <div class="analysis-chart">
+                    <h3>Аналитична рамка за резултатите</h3>
+                    <canvas id="researchChart" width="400" height="200"></canvas>
+                    <div class="chart-legend">
+                        <span class="legend-item"><i class="fas fa-square" style="color: #36a2eb"></i> Култура</span>
+                        <span class="legend-item"><i class="fas fa-square" style="color: #ff6384"></i> Политики</span>
+                        <span class="legend-item"><i class="fas fa-square" style="color: #4bc0c0"></i> Практики</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Анкетна система -->
+    <section id="survey" class="section dark-section">
+        <div class="container">
+            <h2><i class="fas fa-poll-h"></i> Анкетно проучване "Приобщаващо училище"</h2>
+            
+            <div class="survey-container">
+                <form id="inclusion-survey">
+                    <div class="survey-section">
+                        <h3><i class="fas fa-heart"></i> Раздел I: Създаване на приобщаващи култури</h3>
+                        
+                        <div class="question">
+                            <p>1. Всеки, който влиза в училището, се чувства добре дошъл и приет.</p>
+                            <div class="likert-scale">
+                                <label><input type="radio" name="q1" value="1"> 1 - Напълно несъгласен</label>
+                                <label><input type="radio" name="q1" value="2"> 2</label>
+                                <label><input type="radio" name="q1" value="3"> 3</label>
+                                <label><input type="radio" name="q1" value="4"> 4</label>
+                                <label><input type="radio" name="q1" value="5"> 5 - Напълно съгласен</label>
+                            </div>
+                        </div>
+
+                        <div class="question">
+                            <p>2. Учениците си помагат взаимно в учебния процес, вместо да се конкурират агресивно.</p>
+                            <div class="likert-scale">
+                                <label><input type="radio" name="q2" value="1"> 1</label>
+                                <label><input type="radio" name="q2" value="2"> 2</label>
+                                <label><input type="radio" name="q2" value="3"> 3</label>
+                                <label><input type="radio" name="q2" value="4"> 4</label>
+                                <label><input type="radio" name="q2" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="survey-section">
+                        <h3><i class="fas fa-balance-scale"></i> Раздел II: Приобщаващи политики</h3>
+                        
+                        <div class="question">
+                            <p>6. Сградата на училището е физически достъпна за всички (рампи, асансьори, тоалетни).</p>
+                            <div class="likert-scale">
+                                <label><input type="radio" name="q6" value="1"> 1</label>
+                                <label><input type="radio" name="q6" value="2"> 2</label>
+                                <label><input type="radio" name="q6" value="3"> 3</label>
+                                <label><input type="radio" name="q6" value="4"> 4</label>
+                                <label><input type="radio" name="q6" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="survey-section">
+                        <h3><i class="fas fa-chalkboard-teacher"></i> Раздел III: Приобщаващи практики</h3>
+                        
+                        <div class="question">
+                            <p>11. Уроците се планират с мисъл за разнообразието на учениците (диференцирано преподаване).</p>
+                            <div class="likert-scale">
+                                <label><input type="radio" name="q11" value="1"> 1</label>
+                                <label><input type="radio" name="q11" value="2"> 2</label>
+                                <label><input type="radio" name="q11" value="3"> 3</label>
+                                <label><input type="radio" name="q11" value="4"> 4</label>
+                                <label><input type="radio" name="q11" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="survey-section">
+                        <h3><i class="fas fa-comment-dots"></i> Отворени въпроси</h3>
+                        
+                        <div class="open-question">
+                            <label for="q16">16. Коя е най-голямата пречка пред пълноценното приобщаване във Вашето училище?</label>
+                            <textarea id="q16" rows="3" placeholder="Моля, посочете конкретни примери..."></textarea>
+                        </div>
+
+                        <div class="open-question">
+                            <label for="q17">17. Какви промени във физическата среда биха подобрили работата/ученето Ви?</label>
+                            <textarea id="q17" rows="3" placeholder="Опишете предложенията си..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="survey-submit">
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Изпрати анкетата
+                        </button>
+                        <p class="survey-note">Данните ще бъдат обработени анонимно и използвани за научни цели.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Чат система за идеи -->
+    <section id="chat" class="section">
+        <div class="container">
+            <h2><i class="fas fa-lightbulb"></i> Чат за предлагане на идеи и обратна връзка</h2>
+            
+            <div class="chat-container">
+                <div class="chat-sidebar">
+                    <div class="chat-info">
+                        <h4><i class="fas fa-info-circle"></i> Насоки за участие:</h4>
+                        <ul>
+                            <li>Споделете идеи за подобряване на приобщаването</li>
+                            <li>Предложете иновативни решения за училищната среда</li>
+                            <li>Дискутирайте добри практики</li>
+                            <li>Всички мнения са добре дошли!</li>
+                        </ul>
+                    </div>
+                    <div class="active-users">
+                        <h4><i class="fas fa-users"></i> Активни участници:</h4>
+                        <div id="users-list">
+                            <div class="user"><i class="fas fa-user"></i> Учител_1</div>
+                            <div class="user"><i class="fas fa-user"></i> Родител_2</div>
+                            <div class="user"><i class="fas fa-user"></i> Експерт_3</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-main">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message received">
+                            <div class="message-header">
+                                <span class="sender">Проф. Цоков</span>
+                                <span class="time">10:30</span>
+                            </div>
+                            <div class="message-content">
+                                Добре дошли в дискусията за приобщаващото образование! Споделете вашите идеи.
+                            </div>
+                        </div>
+                        <div class="message sent">
+                            <div class="message-header">
+                                <span class="sender">Аз</span>
+                                <span class="time">10:35</span>
+                            </div>
+                            <div class="message-content">
+                                Предлагам внедряването на повече сензорни стаи във всяко училище.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input">
+                        <input type="text" id="message-input" placeholder="Напишете вашата идея тук...">
+                        <button id="send-btn">
+                            <i class="fas fa-paper-plane"></i> Изпрати
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ideas-gallery">
+                <h3><i class="fas fa-star"></i> Най-добри предложения:</h3>
+                <div class="ideas-grid">
+                    <div class="idea-card">
+                        <div class="idea-header">
+                            <i class="fas fa-user-graduate"></i>
+                            <span class="idea-author">Учител по математика</span>
+                        </div>
+                        <div class="idea-content">
+                            "Внедряване на тактилни математически пособия за ученици със зрителни увреждания"
+                        </div>
+                        <div class="idea-votes">
+                            <button class="vote-btn"><i class="fas fa-thumbs-up"></i> 24</button>
+                            <button class="vote-btn"><i class="fas fa-thumbs-down"></i> 2</button>
+                        </div>
+                    </div>
+                    <div class="idea-card">
+                        <div class="idea-header">
+                            <i class="fas fa-user-md"></i>
+                            <span class="idea-author">Школен психолог</span>
+                        </div>
+                        <div class="idea-content">
+                            "Регулярни семинари за родители на тема приобщаващо образование"
+                        </div>
+                        <div class="idea-votes">
+                            <button class="vote-btn"><i class="fas fa-thumbs-up"></i> 18</button>
+                            <button class="vote-btn"><i class="fas fa-thumbs-down"></i> 1</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ресурси и връзки -->
+    <section id="resources" class="section dark-section">
+        <div class="container">
+            <h2><i class="fas fa-external-link-alt"></i> Полезни ресурси и връзки</h2>
+            
+            <div class="resources-grid">
+                <div class="resource-category">
+                    <h3><i class="fas fa-file-contract"></i> Нормативни документи</h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://varna.obshtini.bg/doc/4416804/0/" target="_blank">
+                                Наредба №24 за физическата среда
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://priem.sliven.bg/documents/naredba_priobshtavashto_obrazovanie_11.11.2016.pdf" target="_blank">
+                                Наредба за приобщаващото образование
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.mh.government.bg/upload/4095/naredba-24-10-09-2020-fizicheska-sreda.pdf" target="_blank">
+                                Пълният текст на Наредба №24
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resource-category">
+                    <h3><i class="fas fa-book"></i> Методики и рамки</h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://www.cast.org/what-we-do/universal-design-for-learning/" target="_blank">
+                                Universal Design for Learning (CAST)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://csie.org.uk/index-for-inclusion/" target="_blank">
+                                Index for Inclusion (Booth & Ainscow)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://universaldesign.ie/about-universal-design/the-7-principles" target="_blank">
+                                7-те принципа на Универсалния дизайн
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resource-category">
+                    <h3><i class="fas fa-tools"></i> Практически ръководства</h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://www.theottoolbox.com/sensory-room-equipment-ot-recommendations/" target="_blank">
+                                Оборудване на сензорни стаи
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.sensorytrust.org.uk/resources/guidance/sensory-gardens-design-guide" target="_blank">
+                                Ръководство за сензорни градини
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.ablespace.io/blog/guide-to-alternative-seating-in-special-education-classrooms/" target="_blank">
+                                Гъвкаво разположение в клас
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resource-category">
+                    <h3><i class="fas fa-university"></i> Научни източници</h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://pfpu.bg/катедри/педагогика-и-управление-на-образ/галин-цоков-4/" target="_blank">
+                                Проф. д-р Галин Цоков - Публикации
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://eric.ed.gov/?id=ED440482" target="_blank">
+                                Index for Inclusion в ERIC
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://ncse.ie/wp-content/uploads/2025/03/Sensory-Spaces-in-Schools.pdf" target="_blank">
+                                Сензорни пространства в училища (NCSE)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футър -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Контакти</h4>
+                    <p><i class="fas fa-envelope"></i> inclusion@schoolmodel.bg</p>
+                    <p><i class="fas fa-phone"></i> +359 2 123 4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> София, България</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Партньори</h4>
+                    <p>Министерство на образованието и науката</p>
+                    <p>Софийски университет</p>
+                    <p>Центрове за подкрепа за личностно развитие</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Бързи връзки</h4>
+                    <a href="#survey">Анкета</a>
+                    <a href="#chat">Чат за идеи</a>
+                    <a href="#resources">Ресурси</a>
+                    <a href="#model">Интерактивен макет</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Концептуален модел на приобщаваща училищна среда. Всички права запазени.</p>
+                <p>Разработено в съответствие с Наредба №24 и принципите на Универсалния дизайн за учене.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скриптове -->
+    <script src="script.js"></script>
+    <script src="survey.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>

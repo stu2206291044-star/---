@@ -1,0 +1,231 @@
+// Разширена функционалност за анкетната система
+class SurveySystem {
+    constructor() {
+        this.currentSection = 0;
+        this.sections = document.querySelectorAll('.survey-section');
+        this.initProgressBar();
+        this.initNavigation();
+    }
+    
+    initProgressBar() {
+        // Създаване на прогрес бар
+        const surveyContainer = document.querySelector('.survey-container');
+        const progressBar = document.createElement('div');
+        progressBar.className = 'survey-progress';
+        
+        progressBar.innerHTML = `
+            <div class="progress-track">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="progress-labels">
+                <span class="progress-step active">Култура</span>
+                <span class="progress-step">Политики</span>
+                <span class="progress-step">Практики</span>
+                <span class="progress-step">Допълнителни</span>
+            </div>
+        `;
+        
+        surveyContainer.insertBefore(progressBar, surveyContainer.firstChild);
+        
+        this.progressFill = progressBar.querySelector('.progress-fill');
+        this.progressSteps = progressBar.querySelectorAll('.progress-step');
+    }
+    
+    initNavigation() {
+        // Добавяне на бутони за навигация
+        const surveyForm = document.getElementById('inclusion-survey');
+        
+        // Създаване на контейнер за навигация
+        const navContainer = document.createElement('div');
+        navContainer.className = 'survey-navigation';
+        
+        navContainer.innerHTML = `
+            <button type="button" class="nav-btn prev-btn" disabled>
+                <i class="fas fa-arrow-left"></i> Предишна
+            </button>
+            <span class="section-counter">Секция 1 от ${this.sections.length}</span>
+            <button type="button" class="nav-btn next-btn">
+                Следваща <i class="fas fa-arrow-right"></i>
+            </button>
+        `;
+        
+        // Добавяне на навигацията след всяка секция
+        this.sections.forEach((section, index) => {
+            if (index < this.sections.length - 1) {
+                const sectionNav = navContainer.cloneNode(true);
+                section.appendChild(sectionNav);
+                
+                // Добавяне на event listeners
+                const prevBtn = sectionNav.querySelector('.prev-btn');
+                const nextBtn = sectionNav.querySelector('.next-btn');
+                const counter = sectionNav.querySelector('.section-counter');
+                
+                prevBtn.addEventListener('click', () => this.prevSection(index));
+                nextBtn.addEventListener('click', () => this.nextSection(index));
+            }
+        });
+        
+        // Обновяване на първоначалното състояние
+        this.updateNavigation();
+    }
+    
+    nextSection(currentIndex) {
+        // Проверка за задължителни въпроси
+        if (!this.validateSection(currentIndex)) {
+            alert('Моля, отговорете на всички въпроси в тази секция преди да продължите.');
+            return;
+        }
+        
+        // Скриване на текущата секция
+        this.sections[currentIndex].style.display = 'none';
+        
+        // Показване на следващата секция
+        if (currentIndex + 1 < this.sections.length) {
+            this.sections[currentIndex + 1].style.display = 'block';
+            this.currentSection = currentIndex + 1;
+            this.updateProgress();
+            this.updateNavigation();
+            
+            // Плавно скролиране
+            this.sections[currentIndex + 1].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    
+    prevSection(currentIndex) {
+        if (currentIndex > 0) {
+            this.sections[currentIndex].style.display = 'none';
+            this.sections[currentIndex - 1].style.display = 'block';
+            this.currentSection = currentIndex - 1;
+            this.updateProgress();
+            this.updateNavigation();
+            
+            this.sections[currentIndex - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    
+    validateSection(sectionIndex) {
+        const section = this.sections[sectionIndex];
+        const requiredInputs = section.querySelectorAll('input[required], textarea[required]');
+        
+        for (const input of requiredInputs) {
+            if (!input.value.trim()) {
+                input.focus();
+                return false;
+            }
+        }
+        
+        // Проверка за поне един отговор за всяка група радио бутони
+        const radioGroups = {};
+        section.querySelectorAll('input[type="radio"]').forEach(radio => {
+            const name = radio.name;
+            if (!radioGroups[name]) {
+                radioGroups[name] = false;
+            }
+            if (radio.checked) {
+                radioGroups[name] = true;
+            }
+        });
+        
+        return Object.values(radioGroups).every(answered => answered);
+    }
+    
+    updateProgress() {
+        const progress = ((this.currentSection + 1) / this.sections.length) * 100;
+        this.progressFill.style.width = `${progress}%`;
+        
+        // Обновяване на стъпките
+        this.progressSteps.forEach((step, index) => {
+            if (index <= this.currentSection) {
+                step.classList.add('active');
+            } else {
+                step.classList.remove('active');
+            }
+        });
+    }
+    
+    updateNavigation() {
+        // Обновяване на всички навигационни бутони
+        document.querySelectorAll('.survey-navigation').forEach((nav, index) => {
+            const prevBtn = nav.querySelector('.prev-btn');
+            const nextBtn = nav.querySelector('.next-btn');
+            const counter = nav.querySelector('.section-counter');
+            
+            // Обновяване на брояча
+            counter.textContent = `Секция ${this.currentSection + 1} от ${this.sections.length}`;
+            
+            // Обновяване на бутоните
+            prevBtn.disabled = this.currentSection === 0;
+            nextBtn.textContent = this.currentSection === this.sections.length - 2 
+                ? 'Преглед <i class="fas fa-eye"></i>' 
+                : 'Следваща <i class="fas fa-arrow-right"></i>';
+        });
+    }
+    
+    // Експорт на данни в различни формати
+    exportData(format = 'json') {
+        const formData = new FormData(document.getElementById('inclusion-survey'));
+        const data = {};
+        
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        
+        // Добавяне на отворените въпроси
+        document.querySelectorAll('textarea').forEach(textarea => {
+            data[textarea.id] = textarea.value;
+        });
+        
+        switch(format) {
+            case 'json':
+                return JSON.stringify(data, null, 2);
+            case 'csv':
+                return this.convertToCSV(data);
+            case 'excel':
+                return this.convertToExcel(data);
+            default:
+                return data;
+        }
+    }
+    
+    convertToCSV(data) {
+        const headers = Object.keys(data).join(',');
+        const values = Object.values(data).map(v => `"${v}"`).join(',');
+        return `${headers}\n${values}`;
+    }
+    
+    convertToExcel(data) {
+        // Тук бихме използвали библиотека като SheetJS
+        console.log('Експорт към Excel:', data);
+        return data;
+    }
+}
+
+// Инициализиране на анкетната система
+let surveySystem;
+document.addEventListener('DOMContentLoaded', () => {
+    surveySystem = new SurveySystem();
+    
+    // Добавяне на бутон за експорт
+    const exportBtn = document.createElement('button');
+    exportBtn.className = 'export-btn';
+    exportBtn.innerHTML = '<i class="fas fa-download"></i> Експортирай данни';
+    exportBtn.addEventListener('click', () => {
+        const data = surveySystem.exportData('json');
+        this.downloadData(data, 'survey-data.json');
+    });
+    
+    document.querySelector('.survey-submit').appendChild(exportBtn);
+});
+
+// Функция за изтегляне на данни
+function downloadData(content, fileName) {
+    const blob = new Blob([content], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}

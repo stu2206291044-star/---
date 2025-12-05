@@ -1,0 +1,94 @@
+// Разширена функционалност за чат системата
+class ChatSystem {
+    constructor() {
+        this.messages = [];
+        this.users = [];
+        this.initializeEventListeners();
+        this.loadPreviousMessages();
+    }
+    
+    initializeEventListeners() {
+        // Добавяне на гласуване за идеи
+        document.querySelectorAll('.vote-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                this.handleVote(e.target.closest('.vote-btn'));
+            });
+        });
+        
+        // Добавяне на възможност за репортиране
+        document.querySelectorAll('.idea-card').forEach(card => {
+            const reportBtn = document.createElement('button');
+            reportBtn.className = 'report-btn';
+            reportBtn.innerHTML = '<i class="fas fa-flag"></i>';
+            reportBtn.addEventListener('click', () => this.reportIdea(card));
+            card.querySelector('.idea-votes').appendChild(reportBtn);
+        });
+    }
+    
+    handleVote(button) {
+        const voteType = button.querySelector('i').classList.contains('fa-thumbs-up') ? 'up' : 'down';
+        const countSpan = button.querySelector('i').nextSibling;
+        let count = parseInt(countSpan.textContent) || 0;
+        
+        // Проверка дали потребителят вече е гласувал
+        const ideaCard = button.closest('.idea-card');
+        const ideaId = ideaCard.dataset.id || 'idea-' + Date.now();
+        
+        const voteKey = `vote-${ideaId}-${voteType}`;
+        if (localStorage.getItem(voteKey)) {
+            alert('Вече сте гласували за тази идея!');
+            return;
+        }
+        
+        // Обновяване на броя
+        count++;
+        countSpan.textContent = count;
+        
+        // Запазване на гласа
+        localStorage.setItem(voteKey, 'true');
+        
+        // Изпращане на данни към сървър (симулирано)
+        this.sendVoteData(ideaId, voteType);
+    }
+    
+    reportIdea(card) {
+        const ideaContent = card.querySelector('.idea-content').textContent;
+        const reason = prompt('Моля, посочете причина за репорта:\n1. Неподходящо съдържание\n2. Спам\n3. Друго');
+        
+        if (reason) {
+            alert('Благодарим Ви за сигнала! Ще прегледаме идеята.');
+            // Тук бихме изпратили репорта към сървър
+            console.log('Репорт за идея:', { content: ideaContent, reason: reason });
+        }
+    }
+    
+    loadPreviousMessages() {
+        // Зареждане на запазени съобщения от localStorage
+        const savedMessages = localStorage.getItem('chatMessages');
+        if (savedMessages) {
+            this.messages = JSON.parse(savedMessages);
+            this.displayMessages();
+        }
+    }
+    
+    saveMessages() {
+        localStorage.setItem('chatMessages', JSON.stringify(this.messages));
+    }
+    
+    sendVoteData(ideaId, voteType) {
+        // Симулирано изпращане на данни
+        console.log('Глас регистриран:', { ideaId, voteType, timestamp: new Date().toISOString() });
+        
+        // В реална система:
+        // fetch('/api/vote', {
+        //     method: 'POST',
+        //     body: JSON.stringify({ ideaId, voteType })
+        // });
+    }
+}
+
+// Инициализиране на чат системата при зареждане
+let chatSystem;
+document.addEventListener('DOMContentLoaded', () => {
+    chatSystem = new ChatSystem();
+});
